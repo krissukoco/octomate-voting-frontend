@@ -2,6 +2,33 @@
 
 A simple React-based voting application built for a technical test. This frontend interfaces with a backend API to provide a voting system where users can vote for holiday destinations.
 
+## 🌐 Live Demo
+
+**Try the application**: [https://octomate-voting.krissukoco.com](https://octomate-voting.krissukoco.com)
+
+### How to Test the Application:
+
+1. **Login as Admin**
+   - Username: `admin`
+   - Password: `admin`
+
+2. **Create User Account**
+   - Navigate to "Users" from the admin dashboard
+   - Click "Create New User" 
+   - Fill in the user details (username and password)
+
+3. **Vote as User**
+   - Logout from admin account
+   - Login with the user credentials you just created
+   - Vote for your preferred holiday destination (choose from options or enter custom destination)
+
+4. **View Voting Results**
+   - Logout from user account
+   - Login as admin again (`admin` / `admin`)
+   - Navigate to "Votes" to see the voting statistics and results
+
+The application demonstrates role-based authentication, user management, voting functionality, and result visualization.
+
 ## Features
 
 - **Role-based Authentication**: Separate interfaces for Admin and User roles
