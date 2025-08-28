@@ -66,7 +66,7 @@ const LoginPage: FC = () => {
               id='login.username'
               placeholder={userType === 'USER' ? 'Ask Admin for username' : 'Username'}
               {...register('username', {
-                required: 'Wajib diisi',
+                required: 'Username is required',
               })}
             />
             {errors?.username && <p className="text-xs text-red-500">{errors?.username?.message}</p>}
@@ -81,7 +81,7 @@ const LoginPage: FC = () => {
                 id='login.password'
                 placeholder={userType === 'USER' ? 'Ask Admin for password' : '*********'}
                 {...register('password', {
-                  required: 'Wajib diisi',
+                  required: 'Password is required',
                 })}
               />
               <button

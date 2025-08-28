@@ -69,6 +69,7 @@ export const AuthContextProvider: FC<{ children?: ReactNode }> = ({ children }) 
       refetchActor();
       return;
     }
+    setAuthenticatedAs(null);
   }, [setAuthenticatedAs, getAdminAuth, getUserAuth, refetchActor])
 
   const loginUser = useCallback(async(req: LoginRequest) => {
@@ -101,7 +102,6 @@ export const AuthContextProvider: FC<{ children?: ReactNode }> = ({ children }) 
     removeAdminAuth();
     removeUserAuth();
     reloadAuth();
-    window.location.replace('/login');
   }, [removeAdminAuth, removeUserAuth, reloadAuth])
 
   useEffect(() => {

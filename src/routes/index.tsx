@@ -20,17 +20,17 @@ const AppRoutes: FC = () => {
             <Route path='/users' element={<UserListPage />} />
             <Route path='/users/create' element={<UserCreatePage />} />
             <Route path='/votes' element={<AdminVotePage />} />
-            <Route path='*' element={<Navigate to='/' />} />
+            <Route path='*' element={<Navigate to='/' replace/>} />
           </>
         ) : auth.authenticatedAs === 'USER' ? (
           <>
             <Route path='' element={<UserHomePage />} />
-            <Route path='*' element={<Navigate to='/' />} />
+            <Route path='*' element={<Navigate to='/' replace/>} />
           </>
         ) : (
           <>
             <Route path='/login' element={<LoginPage />} />
-            <Route path='*' element={<Navigate to='login'/>} />
+            <Route path='*' element={<Navigate to='login' replace/>} />
           </>
         )}
       </Routes>

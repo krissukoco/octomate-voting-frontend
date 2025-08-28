@@ -15,3 +15,11 @@ export const getUsers = (page: number, size: number): Promise<PaginatedResponse<
     method: 'GET',
   })
 }
+
+export const createUser = (username: string): Promise<{id: string}> => {
+  return api({
+    url: `admin/users`,
+    method: 'POST',
+    body: { username },
+  })
+}

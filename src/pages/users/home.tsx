@@ -59,7 +59,7 @@ const UserHomePage: FC = () => {
                   {opts.data.list.map((op, i) => (
                     <button
                       key={`choice.${i}`}
-                      className={`btn btn-sm bg-blue-100 ${choiceIndex === i ? 'border border-blue-500' : ''}`}
+                      className={`btn btn-sm bg-blue-100 ${choiceIndex === i ? 'border border-blue-800 bg-blue-400 text-white font-bold' : ''}`}
                       onClick={() => setChoiceIndex(i)}
                     >
                       <span>{op}</span>
@@ -77,6 +77,7 @@ const UserHomePage: FC = () => {
                 <input 
                   type="text"
                   className={`input input-sm w-full outline-hidden ${choiceIndex < 0 ? 'border border-blue-500' : ''}`}
+                  placeholder="e.g. Bandung, Tokyo, US"
                   value={custom}
                   onFocus={() => {
                     setChoiceIndex(-1);
