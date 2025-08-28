@@ -15,11 +15,13 @@ A simple React-based voting application built for a technical test. This fronten
 2. **Create User Account**
    - Navigate to "Users" from the admin dashboard
    - Click "Create New User" 
-   - Fill in the user details (username and password)
+   - Enter only the username (password will be generated automatically by the backend)
+   - After creation, you'll be redirected to the user list page
+   - Find the newly created user in the table and click "Copy Password" to get the generated password
 
 3. **Vote as User**
    - Logout from admin account
-   - Login with the user credentials you just created
+   - Login with the username you created and the copied password
    - Vote for your preferred holiday destination (choose from options or enter custom destination)
 
 4. **View Voting Results**
