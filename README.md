@@ -1,69 +1,112 @@
-# React + TypeScript + Vite
+# Octomate Voting Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple React-based voting application built for a technical test. This frontend interfaces with a backend API to provide a voting system where users can vote for holiday destinations.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Role-based Authentication**: Separate interfaces for Admin and User roles
+- **Admin Dashboard**: Manage users, view voting results, and system administration
+- **User Voting Interface**: Vote for holiday destinations with predefined options or custom choices
+- **Real-time Updates**: Vote changes are reflected immediately
+- **Responsive Design**: Built with Tailwind CSS and DaisyUI components
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── App.tsx                 # Main application component with auth context
+├── _auth/                  # Authentication utilities
+├── _network/               # API client configuration
+│   └── api.ts             # HTTP client with auth headers
+├── _services/             # API service functions
+│   ├── auth.ts            # Authentication services
+│   ├── user.ts            # User management services
+│   └── vote.ts            # Voting services
+├── context/               # React contexts
+│   └── auth.tsx           # Authentication context provider
+├── hooks/                 # Custom React hooks
+│   └── api.tsx            # API request hook
+├── pages/                 # Page components
+│   ├── admin/             # Admin-specific pages
+│   │   ├── home.tsx       # Admin dashboard
+│   │   ├── user-create.tsx # Create new users
+│   │   ├── user-list.tsx   # List all users
+│   │   └── vote.tsx       # View voting results
+│   ├── users/             # User-specific pages
+│   │   └── home.tsx       # User voting interface
+│   └── login.tsx          # Login page
+└── routes/                # Route configuration
+    └── index.tsx          # Role-based routing logic
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## User Roles
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Admin
+- Access user management (create, list users)
+- View voting results and statistics
+- Administrative dashboard
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### User
+- Vote for holiday destinations
+- Choose from predefined options or enter custom destinations
+- Modify vote choices
+
+## Tech Stack
+
+- **React 19** with TypeScript
+- **Vite** for build tooling
+- **React Router** for navigation
+- **Tailwind CSS** + **DaisyUI** for styling
+- **React Hook Form** for form handling
+- **React Hot Toast** for notifications
+
+## Setup & Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd octomate-voting-frontend
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Configure environment**
+   ```bash
+   cp .env.example .env
+   ```
+   Update the `VITE_API_BASE_URL` in `.env` to point to your backend API (default: `http://localhost:8080`)
+
+4. **Start development server**
+   ```bash
+   npm run dev
+   ```
+
+5. **Build for production**
+   ```bash
+   npm run build
+   ```
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run lint` - Run ESLint
+- `npm run preview` - Preview production build
+
+## Backend Integration
+
+This frontend expects a backend API running with the following endpoints:
+- `POST /auth/admin/login` - Admin authentication
+- `POST /auth/user/login` - User authentication
+- `GET /vote/current` - Get current user's vote
+- `GET /vote/options` - Get predefined voting options
+- `POST /vote` - Submit/update vote
+- `GET /admin/summary` - Get voting statistics (admin only)
+- User management endpoints for admin operations
+
+## Development Notes
+
+This project was built as a technical test submission for a backend position. The frontend is intentionally simple to demonstrate integration capabilities with the primary backend implementation. The focus is on clean code structure, proper authentication flow, and seamless API integration.
